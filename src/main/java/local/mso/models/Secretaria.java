@@ -46,7 +46,6 @@ public class Secretaria {
         this.funcioanamento = funcioanamento;
     }
 
-    
 
     public String getStatus() {
         return status;
@@ -74,6 +73,16 @@ public class Secretaria {
     
     
    /* ------------ METODOS DA CLASSE --------------------- */
+
+    @Override
+    public String toString() {
+        return "Secretaria[" +
+                "Id='" + this.getId() + '\'' +
+                ", matricula='" +  + '\'' +
+                ", curso='" +  + '\'' +
+                ", disciplinas="   +
+                ", notas="   +
+                ']';
+    } 
     
-  
 }
