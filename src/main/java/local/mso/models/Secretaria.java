@@ -1,7 +1,7 @@
 
 package local.mso.models;
 
-import java.util.Date;
+import java.util.Calendar;
 
 /**
  *
@@ -19,7 +19,9 @@ public class Secretaria {
     private String email;
     private String localizacao;
     
-    public Secretaria(){};
+    public Secretaria(){
+        //this
+    };
   
    /* ------------ GETTER'S E SETTER'S --------------------- */
     public int getId() {
@@ -73,16 +75,36 @@ public class Secretaria {
     
     
    /* ------------ METODOS DA CLASSE --------------------- */
+    
+    public  void carregarDadosSecretaria() {
+        this.setLocalizacao("Andar Terreo ao Lado da escada");
+        this.setEmail("secretaria-sce@gmail.com");
+        this.setId(01);
+        this.setFuncioanamento("\t\t[manhã - 08:00 h às 12:00 h tarde - 13:30 h às 16:00 h.] ");
+        this.setStatus(getStatusDiaHora());
+    }
+    
+    private static String getStatusDiaHora() {
+        Calendar hoje = Calendar.getInstance();
+        String msg = "";
+        
+        int hora = hoje.get(Calendar.HOUR);
+        
+        if ( hora >= 8 && hora <= 12) {
+            msg = "Aberto";
+        } else if (hora >= 13 &&  hora <= 17 ){ 
+            msg = "Aberto";
+        } else {
+            msg = "Fechado";
+        }
+        return msg;
+    }
+
 
     @Override
     public String toString() {
-        return "Secretaria[" +
-                "Id='" + this.getId() + '\'' +
-                ", matricula='" +  + '\'' +
-                ", curso='" +  + '\'' +
-                ", disciplinas="   +
-                ", notas="   +
-                ']';
+        return "\nSecretaria[" + this.getStatus() +"] " +
+                     this.getFuncioanamento();
     } 
     
 }
